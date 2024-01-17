@@ -9,11 +9,30 @@ function customerSuccessBalancing(
   customers,
   customerSuccessAway
 ) {
-  /**
-   * ===============================================
-   * =========== Write your solution here ==========
-   * ===============================================
-   */
+  customerSuccess = customerSuccess.filter(cs => !customerSuccessAway.includes(cs.id));
+  customerSuccess.sort((a, b) => a.score - b.score);
+  customers.sort((a, b) => a.score - b.score);
+
+  let csCustomerCount = {};
+  let maxCount = 0;
+  let maxCsId = 0;
+
+  for (let customer of customers) {
+    for (let cs of customerSuccess) {
+      if (cs.score >= customer.score) {
+        csCustomerCount[cs.id] = (csCustomerCount[cs.id] || 0) + 1;
+        if (csCustomerCount[cs.id] > maxCount) {
+          maxCount = csCustomerCount[cs.id];
+          maxCsId = cs.id;
+        } else if (csCustomerCount[cs.id] === maxCount) {
+          maxCsId = 0;
+        }
+        break;
+      }
+    }
+  }
+
+  return maxCsId;
 }
 
 test("Scenario 1", () => {
