@@ -14,17 +14,17 @@ function customerSuccessBalancing(
   customers.sort((a, b) => a.score - b.score);
 
   let csCustomerCount = {};
-  let maxCount = 0;
+  let maxCustomerCount = 0;
   let maxCsId = 0;
 
   for (let customer of customers) {
     for (let cs of customerSuccess) {
       if (cs.score >= customer.score) {
         csCustomerCount[cs.id] = (csCustomerCount[cs.id] || 0) + 1;
-        if (csCustomerCount[cs.id] > maxCount) {
-          maxCount = csCustomerCount[cs.id];
+        if (csCustomerCount[cs.id] > maxCustomerCount) {
+          maxCustomerCount = csCustomerCount[cs.id];
           maxCsId = cs.id;
-        } else if (csCustomerCount[cs.id] === maxCount) {
+        } else if (csCustomerCount[cs.id] === maxCustomerCount) {
           maxCsId = 0;
         }
         break;
