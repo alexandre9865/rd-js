@@ -1,7 +1,6 @@
 # Desafio - CustomerSuccess Balancing
-#
-# Feito em Javascript
-#
+## Feito em Javascript
+##
 ## Como rodar os testes para ver o algoritmo de dentro da função customerSuccessBalancing funcionando:
 
 No terminal, execute os comandos:
